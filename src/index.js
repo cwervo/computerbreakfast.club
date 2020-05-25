@@ -8,6 +8,20 @@ require("three/examples/js/loaders/GLTFLoader");
 
 let computer, breakfast;
 
+function newMetaTag(name, content) {
+    let m = document.createElement('meta')
+    m.setAttribute("name", name);
+    m.setAttribute("content", content);
+    document.head.appendChild(m);
+}
+
+function setupHead() {
+    newMetaTag("twitter:creator", "@cwervo");
+    newMetaTag("twitter:title", "💻 comuterbreakfast.club 🍳");
+    newMetaTag("twitter:description", "A better way to disconnect from technology & still be \"Extremely Online\"");
+    newMetaTag("twitter:image", "./images/computer-breakfast-banner.jpg");
+}
+
 function loadModel(path, scene) {
     let loader = new THREE.GLTFLoader();
     let ret;
@@ -128,5 +142,6 @@ font-family: sans-serif;`
 document.body.appendChild(text)
 
 document.querySelector('title').innerText = '💻🍳';
+setupHead();
 
 canvasSketch(sketch, settings);
