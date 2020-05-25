@@ -16,6 +16,7 @@ function newMetaTag(name, content) {
 }
 
 function setupHead() {
+    document.querySelector('title').innerText = '💻🍳';
     newMetaTag("twitter:creator", "@cwervo");
     newMetaTag("twitter:title", "💻 comuterbreakfast.club 🍳");
     newMetaTag("twitter:description", "A better way to disconnect from technology & still be \"Extremely Online\"");
@@ -131,7 +132,8 @@ Computer Breakfast Club, a better way to disconnect from technology & still be "
 3D models: <a href="https://poly.google.com/view/adp5MvenMQm">Breakfast from Ashley Alicea</a> // <a href="https://poly.google.com/view/eCQBPXzmq1C">Computer from Google</a>
 `
 text.style = ` text-align: center;
-max-width: 75%;
+left: 10%;
+max-width: 80%;
 position: absolute;
 bottom: 4rem;
 background-color: rgba(255, 255, 255, 20%);
@@ -141,7 +143,6 @@ font-family: sans-serif;`
 
 document.body.appendChild(text)
 
-document.querySelector('title').innerText = '💻🍳';
-setupHead();
+// setupHead();
 
 canvasSketch(sketch, settings);

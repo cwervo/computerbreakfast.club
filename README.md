@@ -3,5 +3,5 @@
 TBD
 
 - `npm install` for deps
-- `canvas-sketch src/index.js` for a dev server
-- `canvas-sketch src/index.js --build` to build the website
+- `canvas-sketch src/index.js --html=src/index.html` for a dev server
+- `canvas-sketch src/index.js --html=src/index.html --build` to build the website
