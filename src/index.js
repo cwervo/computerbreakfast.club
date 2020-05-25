@@ -16,6 +16,8 @@ function loadModel(path, scene) {
         function ( gltf ) {
             ret = gltf;
             gltf.scene.scale.multiplyScalar(1.5);
+            gltf.scene.position.z -= Math.random() * 2;
+            gltf.scene.position.y -= 3;
             scene.add( gltf.scene );
         },
         // called while loading is progressing
@@ -48,7 +50,7 @@ const sketch = ({ context }) => {
 
     // Setup a camera
     const camera = new THREE.PerspectiveCamera(50, 1, 0.01, 100);
-    camera.position.set(0, 0, -10);
+    camera.position.set(0, 0, -8);
     camera.lookAt(new THREE.Vector3());
 
     // Setup camera controller
@@ -65,13 +67,18 @@ const sketch = ({ context }) => {
 
     // Setup a material
     const material = new THREE.MeshBasicMaterial({
-        color: "red",
+        color: "white",
         wireframe: true
     });
 
     // Setup a mesh with geometry + material
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
+
+    // Add some light!
+    var light = new THREE.PointLight( 0xFFFFFF, 1, 100 );
+    light.position.set( 0, 50, 50 );
+    scene.add( light );
 
     // draw each frame
     return {
@@ -85,7 +92,7 @@ const sketch = ({ context }) => {
         // Update & render your scene here
         render({ time }) {
             scene.rotation.y -= 0.01;
-            scene.rotation.z += 0.016;
+            scene.rotation.z += 0.003145;
             controls.update();
             renderer.render(scene, camera);
         },
@@ -119,5 +126,7 @@ font-size: 2rem;
 font-family: sans-serif;`
 
 document.body.appendChild(text)
+
+document.querySelector('title').innerText = '💻🍳';
 
 canvasSketch(sketch, settings);
